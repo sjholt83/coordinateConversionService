@@ -1,7 +1,9 @@
 pipeline {
     agent any
     options { timestamps () }
-
+    tools {
+        gradle "GRADLE_LATEST"
+    }
     stages {
 
     stage('Clean') {
@@ -12,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'gradle -v'
+                sh 'gradle --version'
             }
         }
         stage('Test') {
